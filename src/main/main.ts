@@ -1,21 +1,7 @@
-// import { app, BrowserWindow } from "electron";
-
-// const createWindow = () => {
-//   const win = new BrowserWindow({
-//     width: 800,
-//     height: 600,
-//   });
-
-//   win.loadFile("index.html");
-//   win.webContents.openDevTools();
-// };
-
-// app.whenReady().then(() => {
-//   createWindow();
-// });
-
 import { app, BrowserWindow } from "electron";
 import path from "path";
+
+const isDev = process.env.NODE_ENV === "development";
 
 let mainWindow: BrowserWindow | null;
 
@@ -26,20 +12,25 @@ async function createWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
+      // preload: path.join(__dirname, 'preload.js'), // if you use preload scripts
     },
   });
 
-  if (process.env.NODE_ENV === "development") {
-    // Load Vite dev server URL for hot reload
+  if (isDev) {
     mainWindow.loadURL("http://localhost:3000");
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
   } else {
-    // Load the production build
     mainWindow.loadFile(path.join(__dirname, "../../dist/renderer/index.html"));
   }
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  createWindow();
+
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
