@@ -1,0 +1,31 @@
+{
+  "name": "electron-demo-eruda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite",
+    "build:renderer": "vite build",
+    "build:main": "vue-tsc --project tsconfig.json",
+    "build": "pnpm build:main && pnpm build:renderer",
+    "electron": "electron dist/main/main.js",
+    "electron:dev": "pnpm build:main && concurrently \"pnpm dev\" \"pnpm electron\""
+  },
+  "author": "Myron Apostolakis",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.15.18",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vue": "^3.5.14",
+    "vue-tsc": "^2.2.10",
+    "wait-on": "^8.0.3"
+  },
+  "dependencies": {
+    "electron": "^25.9.8"
+  }
+}
