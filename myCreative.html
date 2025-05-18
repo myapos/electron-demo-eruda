@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eruda and Remote Console Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/eruda@3.4.1/eruda.min.js"></script>
+    <script
+      src="//04d827b19b115fc913c19baf15b7880c.serveo.net//connector.js"
+      data-channel="testKaizenAd"
+      data-server="https://e7725349eb6c67941589633cbe1d2c48.serveo.net"
+      id="consolerescript"
+    ></script>
+  </head>
+  <body>
+    <div style="display: flex; gap: 10px; flex-direction: column">
+      <div onclick="onClick()" style="cursor: pointer">Click me!</div>
+
+      <a
+        href="%%CLICK_URL_UNESC%%https://kaizengaming.com/home/"
+        target="_blank"
+        style="
+          display: block;
+          width: 300px;
+          height: 250px;
+          background: yellow;
+          color: black;
+          font-size: 24px;
+          text-align: center;
+          line-height: 250px;
+          text-decoration: none;
+          border: 2px solid black;
+        "
+      >
+        Welcome to Kaizen
+      </a>
+    </div>
+
+    <script>
+      function repositionEruda() {
+        // Eruda's .position method usually takes string positions like 'bottom', 'right', etc.
+        eruda.position("bottom");
+      }
+
+      function loadEruda() {
+        eruda.init();
+        console.log("Eruda initialized");
+        repositionEruda();
+        window.addEventListener("resize", repositionEruda);
+      }
+
+      loadEruda();
+
+      function onClick() {
+        console.log("clicked");
+        if (console.re && typeof console.re.log === "function") {
+          console.re.log("remote log test");
+        } else {
+          console.warn("console.re.log is not available");
+        }
+      }
+    </script>
+  </body>
+</html>

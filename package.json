@@ -5,21 +5,22 @@
   "main": "dist/main/main.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "vite",
-    "prod": "cross-env NODE_ENV=production vite",
-    "build:renderer:prod": "vite build",
+    "clean": "rimraf dist",
+    "dev:renderer": "vite",
     "build:renderer:dev": "cross-env NODE_ENV=development vite build",
-    "build:main:prod": "vue-tsc --project tsconfig.main.json",
-    "build:main:dev": "cross-env NODE_ENV=development vue-tsc --project tsconfig.main.json",
-    "build": "pnpm build:main:prod && pnpm build:renderer:prod",
-    "electron:dev": "cross-env NODE_ENV=development electron dist/main/main.js",
-    "electron:prod": "electron dist/main/main.js",
-    "electron:run:prod": "pnpm build:main:prod && concurrently \"pnpm prod\" \"pnpm electron:prod\"",
-    "electron:run:dev": "pnpm build:main:dev && concurrently \"pnpm dev\" \"pnpm electron:dev\"",
-    "dist:win:dev": "pnpm build:main:dev && pnpm build:renderer:dev && electron-builder --win",
-    "dist:win:prod": "pnpm build:main:prod && pnpm build:renderer && electron-builder --win",
-    "dist:linux:dev": "pnpm build:main:dev && pnpm build:renderer:dev && electron-builder --linux",
-    "dist:linux:prod": "pnpm build:main:prod && pnpm build:renderer && electron-builder --linux",
+    "build:renderer:prod": "cross-env NODE_ENV=production vite build",
+    "build:main:dev": "pnpm clean && cross-env NODE_ENV=development vue-tsc --project tsconfig.main.json",
+    "build:main:prod": "pnpm clean && cross-env NODE_ENV=production vue-tsc --project tsconfig.main.json",
+    "build:dev": "pnpm build:main:dev && pnpm build:renderer:dev",
+    "build:prod": "pnpm build:main:prod && pnpm build:renderer:prod",
+    "electron:dev": "concurrently \"pnpm dev:renderer\" \"cross-env NODE_ENV=development electron dist/main/main.js\"",
+    "electron:prod": "concurrently \"pnpm build:renderer:prod -- --preview\" \"cross-env NODE_ENV=production electron dist/main/main.js\"",
+    "run:dev": "pnpm build:dev && pnpm electron:dev",
+    "run:prod": "pnpm build:prod && pnpm electron:prod",
+    "dist:win:dev": "pnpm build:dev && electron-builder --win",
+    "dist:win:prod": "pnpm build:prod && electron-builder --win",
+    "dist:linux:dev": "pnpm build:dev && electron-builder --linux",
+    "dist:linux:prod": "pnpm build:prod && electron-builder --linux",
     "dist": "electron-builder"
   },
   "author": {
@@ -33,15 +34,16 @@
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
     "electron-builder": "^26.0.12",
+    "rimraf": "^6.0.1",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
-    "vue": "^3.5.14",
     "vue-tsc": "^2.2.10",
     "wait-on": "^8.0.3",
-    "electron": "^25.9.8"
+    "electron": "25.9.8"
   },
   "dependencies": {
-    "eruda": "^3.4.1"
+    "eruda": "^3.4.1",
+    "vue": "^3.5.14"
   },
   "build": {
     "appId": "com.yourcompany.yourapp",

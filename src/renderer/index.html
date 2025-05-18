@@ -5,29 +5,36 @@
     <meta
       http-equiv="Content-Security-Policy"
       content="
-        default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://cdn.jsdelivr.net;
-        img-src 'self' https://www.googletagmanager.com https://opencollective.com;
-        style-src 'self' 'unsafe-inline';
-        font-src 'self' data:;
-        frame-src https://www.googletagmanager.com"
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://cdn.jsdelivr.net https://securepubads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    connect-src 'self' https://securepubads.g.doubleclick.net https://pagead2.googlesyndication.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google;
+    img-src 'self' https://www.googletagmanager.com https://securepubads.g.doubleclick.net https://pagead2.googlesyndication.com https://tpc.googlesyndication.com https://googleads.g.doubleclick.net https://*.adtrafficquality.google;
+    style-src 'self' 'unsafe-inline';
+    font-src 'self' data:;
+    frame-src https://www.googletagmanager.com https://securepubads.g.doubleclick.net https://tpc.googlesyndication.com https://*.safeframe.googlesyndication.com https://ep2.adtrafficquality.google;"
     />
 
-    <title>My App</title>
-    <!-- Google Tag Manager -->
+    <script
+      async
+      src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
+      crossorigin="anonymous"
+    ></script>
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-PXK648P4");
+      window.googletag = window.googletag || { cmd: [] };
+      googletag.cmd.push(function () {
+        googletag
+          .defineSlot(
+            "/146900469/dummy_test_ad_unit_2",
+            [300, 250],
+            "div-gpt-ad-1748195411567-0"
+          )
+          .addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+      });
     </script>
-    <!-- End Google Tag Manager -->
+
+    <title>Eruda playground</title>
   </head>
   <body>
     <div id="app"></div>
