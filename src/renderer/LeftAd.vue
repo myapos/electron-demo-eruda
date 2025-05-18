@@ -1,5 +1,5 @@
 <template>
-  <section class="ad ad-left">Left Ad</section>
+  <section class="ad ad-left" id="gtm-ad-left-slot">Left Ad</section>
 </template>
 
 <style scoped>

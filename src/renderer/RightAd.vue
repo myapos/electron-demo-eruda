@@ -1,5 +1,5 @@
 <template>
-  <section class="ad ad-right">Right Ad</section>
+  <section class="ad ad-right" id="gtm-ad-right-slot">Right Ad</section>
 </template>
 <style scoped>
 .ad-right {

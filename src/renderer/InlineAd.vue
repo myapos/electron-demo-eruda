@@ -1,4 +1,6 @@
-<template><section class="ad ad-inline">Inline Ad</section></template>
+<template>
+  <section class="ad ad-inline" id="gtm-ad-inline-slot">Inline Ad</section>
+</template>
 
 <style scoped>
 .ad-inline {
