@@ -16,10 +16,8 @@ if (isDev) {
       });
     }
 
-    // Initial position
     repositionEruda();
 
-    // Reposition on resize
     window.addEventListener("resize", repositionEruda);
   } catch (error) {
     console.error("Failed to load Eruda:", error);
