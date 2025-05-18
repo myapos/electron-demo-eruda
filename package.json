@@ -2,7 +2,7 @@
   "name": "electron-demo-eruda",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main/main.js",
+  "main": "dist/main/main.js",
   "type": "commonjs",
   "scripts": {
     "dev": "vite",
@@ -11,23 +11,52 @@
     "build": "pnpm build:main && pnpm build:renderer",
     "electron": "electron dist/main/main.js",
     "electron:dev": "pnpm build:main && cross-env NODE_ENV=development concurrently \"pnpm dev\" \"pnpm electron\"",
-    "electron:prod": "pnpm build:main && concurrently \"pnpm dev\" \"pnpm electron\""
+    "electron:prod": "pnpm build:main && concurrently \"pnpm dev\" \"pnpm electron\"",
+    "dist:win": "electron-builder --win",
+    "dist:linux:dev": "cross-env NODE_ENV=development && pnpm build && electron-builder --linux",
+    "dist": "electron-builder"
   },
-  "author": "Myron Apostolakis",
+  "author": {
+    "name": "Myron Apostolakis",
+    "email": "myapos@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^22.15.18",
     "@vitejs/plugin-vue": "^5.2.4",
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
+    "electron-builder": "^26.0.12",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vue": "^3.5.14",
     "vue-tsc": "^2.2.10",
-    "wait-on": "^8.0.3"
+    "wait-on": "^8.0.3",
+    "electron": "^25.9.8"
   },
   "dependencies": {
-    "electron": "^25.9.8",
     "eruda": "^3.4.1"
+  },
+  "build": {
+    "appId": "com.yourcompany.yourapp",
+    "productName": "ElectronDemoEruda",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "extraResources": [],
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
   }
 }
