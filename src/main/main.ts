@@ -17,6 +17,7 @@ async function createWindow() {
   });
 
   if (isDev) {
+    // mainWindow.webContents.openDevTools();
     mainWindow.loadURL("http://localhost:3000");
   } else {
     mainWindow.loadFile(path.join(__dirname, "../../dist/renderer/index.html"));
@@ -39,6 +40,18 @@ const fileMenuOnly = Menu.buildFromTemplate([
   {
     label: "File",
     role: "fileMenu",
+  },
+  {
+    label: "View",
+    submenu: [
+      {
+        label: "Reload",
+        accelerator: "CmdOrCtrl+R",
+        click: (_, focusedWindow) => {
+          if (focusedWindow) focusedWindow.reload();
+        },
+      },
+    ],
   },
 ]);
 
