@@ -8,12 +8,13 @@
     "dev": "vite",
     "build:renderer": "vite build",
     "build:main": "vue-tsc --project tsconfig.main.json",
+    "build:main:dev": "cross-env NODE_ENV=development vue-tsc --project tsconfig.main.json",
     "build": "pnpm build:main && pnpm build:renderer",
     "electron": "electron dist/main/main.js",
-    "electron:dev": "pnpm build:main && cross-env NODE_ENV=development concurrently \"pnpm dev\" \"pnpm electron\"",
+    "electron:dev": "pnpm build:main concurrently \"pnpm dev\" \"pnpm electron\"",
     "electron:prod": "pnpm build:main && concurrently \"pnpm dev\" \"pnpm electron\"",
     "dist:win": "electron-builder --win",
-    "dist:linux:dev": "cross-env NODE_ENV=development && pnpm build && electron-builder --linux",
+    "dist:linux:dev": " pnpm build:main:dev && electron-builder --linux",
     "dist": "electron-builder"
   },
   "author": {
