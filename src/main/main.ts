@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from "electron";
 import path from "path";
+import { Menu } from "electron";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -12,13 +13,11 @@ async function createWindow() {
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      // preload: path.join(__dirname, 'preload.js'), // if you use preload scripts
     },
   });
 
   if (isDev) {
     mainWindow.loadURL("http://localhost:3000");
-    // mainWindow.webContents.openDevTools();
   } else {
     mainWindow.loadFile(path.join(__dirname, "../../dist/renderer/index.html"));
   }
@@ -35,3 +34,12 @@ app.whenReady().then(() => {
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
+
+const fileMenuOnly = Menu.buildFromTemplate([
+  {
+    label: "File",
+    role: "fileMenu", // This automatically adds the standard File menu
+  },
+]);
+
+Menu.setApplicationMenu(fileMenuOnly);
