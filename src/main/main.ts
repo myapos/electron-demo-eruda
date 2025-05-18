@@ -38,7 +38,7 @@ app.on("window-all-closed", () => {
 const fileMenuOnly = Menu.buildFromTemplate([
   {
     label: "File",
-    role: "fileMenu", // This automatically adds the standard File menu
+    role: "fileMenu",
   },
 ]);
 
