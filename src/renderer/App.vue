@@ -1,18 +1,33 @@
 <template>
-  <div>
-    Vue component {{ test }}
-    <button @click="increment">Click me</button>
-    <div>{{ counter }}</div>
+  <div class="app-container">
+    <Header>My App</Header>
+    <TopBanner />
+    <Main>
+      <LeftAd />
+      <MainContent />
+      <RightAd />
+    </Main>
+    <BottomBanner />
+    <Footer>Footer content</Footer>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
-const test = ref("Loaded");
-const counter = ref(0);
-
-const increment = () => {
-  counter.value++;
-};
+import Header from "./Header.vue";
+import TopBanner from "./TopBanner.vue";
+import Main from "./Main.vue";
+import BottomBanner from "./BottomBanner.vue";
+import Footer from "./Footer.vue";
+import MainContent from "./MainContent.vue";
+import LeftAd from "./LeftAd.vue";
+import RightAd from "./RightAd.vue";
+import "./assets/main.css";
 </script>
+
+<style scoped>
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+</style>
