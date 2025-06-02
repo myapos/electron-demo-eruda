@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
-    <Header>My App</Header>
-    <TopBanner />
+    <Header>CoreZone</Header>
+    <!-- <TopBanner /> -->
     <Main>
       <LeftAd />
       <MainContent />
@@ -14,7 +14,6 @@
 
 <script setup lang="ts">
 import Header from "./Header.vue";
-import TopBanner from "./TopBanner.vue";
 import Main from "./Main.vue";
 import BottomBanner from "./BottomBanner.vue";
 import Footer from "./Footer.vue";

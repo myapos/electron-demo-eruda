@@ -1,9 +1,22 @@
 <template>
-  <section class="ad ad-right" id="gtm-ad-right-slot">Right Ad</section>
+  <div :id="adId" class="side-ad"></div>
 </template>
+
+<script setup lang="ts">
+import useAd from "./composables/useAd";
+
+const adId = "div-gpt-ad-1748822062979-0";
+useAd(adId, "/146900469/right-side-ad", [120, 600]);
+</script>
+
 <style scoped>
-.ad-right {
+.ad-left {
   width: 120px;
   flex-shrink: 0;
+}
+
+.side-ad {
+  min-width: 120px;
+  min-height: 100%;
 }
 </style>
