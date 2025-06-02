@@ -1,12 +1,23 @@
 import { onMounted } from "vue";
 
-function useAd(adId: string, slotPath: string, dimensions: [number, number]) {
+type slotType = {
+  getSlotElementId: () => string;
+};
+
+let googleTagsAreEnabled = false;
+
+function useAd(
+  adId: string,
+  slotPath: string,
+  dimensions: [number, number] | Array<[number, number]>
+) {
   onMounted(() => {
     if (!window.googletag) {
       window.googletag = { cmd: [] };
     }
 
     let googletag = window.googletag || { cmd: [] };
+
     googletag.cmd.push(() => {
       // Defensive check: if slot already exists, do not redefine
       const existingSlot = googletag
@@ -24,8 +35,11 @@ function useAd(adId: string, slotPath: string, dimensions: [number, number]) {
           return;
         }
 
-        googletag.pubads().enableSingleRequest();
-        googletag.enableServices();
+        if (!googleTagsAreEnabled) {
+          googleTagsAreEnabled = true;
+          googletag.pubads().enableSingleRequest();
+          googletag.enableServices();
+        }
       }
 
       googletag.display(adId);

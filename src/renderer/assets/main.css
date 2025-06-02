@@ -1,8 +1,29 @@
+html,
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .ad {
   background-color: #f1f1f1;
-  color: #333;
-  text-align: center;
   padding: 1rem;
-  font-size: 0.9rem;
   border: 1px dashed #ccc;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 10px 5px;
+}
+
+p {
+  margin: 0px 5px;
+  text-align: justify;
+}
+
+button {
+  all: unset;
+  cursor: pointer; /* usually you'd want to add this back */
 }

@@ -38,5 +38,7 @@ Other tools for Tunelling
 
 #TODOs
 
-- Create some more ad banners and display them
+- Create some more ad banners and display them : OK
+  - multiple ad dimensions, bottom banner ads, left and right banners, top banner, inline ad
+- Investigate for fluid and responsive ads
 - Use some more tools

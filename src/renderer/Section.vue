@@ -1,9 +1,9 @@
 <template>
-  <section class="footer"><slot /></section>
+  <section class="section"><slot /></section>
 </template>
 
 <style scoped>
-.footer {
+.section {
   background: #333;
   color: white;
   padding: 1rem;
