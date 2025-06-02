@@ -1,5 +1,5 @@
 <template>
-  <div :id="adId" style="min-width: 120px; min-height: 600px"></div>
+  <div :id="adId" class="ad ad-left"></div>
 </template>
 
 <script setup lang="ts">
@@ -11,7 +11,8 @@ useAd(adId, "/146900469/side-ad", [120, 600]);
 
 <style scoped>
 .ad-left {
-  width: 120px;
+  min-width: 120px;
+  min-height: 100%;
   flex-shrink: 0;
 }
 </style>

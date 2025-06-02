@@ -1,5 +1,5 @@
 <template>
-  <div :id="adId" class="side-ad"></div>
+  <div :id="adId" class="ad ad-right"></div>
 </template>
 
 <script setup lang="ts">
@@ -15,8 +15,9 @@ useAd(adId, "/146900469/right-side-ad", [120, 600]);
   flex-shrink: 0;
 }
 
-.side-ad {
+.ad-right {
   min-width: 120px;
   min-height: 100%;
+  flex-shrink: 0;
 }
 </style>
