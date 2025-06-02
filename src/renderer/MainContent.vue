@@ -9,55 +9,48 @@
 
     <h2>Section 1</h2>
     <p>
-      Cras accumsan, ligula nec tincidunt pharetra, justo velit dapibus nulla,
-      at volutpat sapien nisi a justo. Sed dignissim justo ut mi dignissim,
-      vitae cursus orci accumsan.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin,
+      nunc in facilisis commodo, nisi erat aliquet enim, nec facilisis enim odio
+      nec nisi. Curabitur non libero at erat sollicitudin tincidunt. Aenean in
+      ligula at enim facilisis commodo. Suspendisse potenti. Morbi in libero nec
+      enim facilisis tincidunt.
     </p>
 
     <!-- Inline Ad -->
     <InlineAd />
+    <TopBanner />
 
     <h2>Section 2</h2>
     <p>
-      Vivamus et malesuada massa. Vestibulum ante ipsum primis in faucibus orci
-      luctus et ultrices posuere cubilia curae; Nullam imperdiet dui vel nulla
-      facilisis, a tincidunt neque ultrices.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin,
+      nunc in facilisis commodo, nisi erat aliquet enim, nec facilisis enim odio
+      nec nisi. Curabitur non libero at erat sollicitudin tincidunt. Aenean in
+      ligula at enim facilisis commodo. Suspendisse potenti. Morbi in libero nec
+      enim facilisis tincidunt.
     </p>
 
     <h3>Subsection</h3>
     <p>
-      Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-      ac turpis egestas. Quisque ut dolor sed libero tristique iaculis eget sit
-      amet mauris.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin,
+      nunc in facilisis commodo, nisi erat aliquet enim, nec facilisis enim odio
+      nec nisi. Curabitur non libero at erat sollicitudin tincidunt. Aenean in
+      ligula at enim facilisis commodo. Suspendisse potenti. Morbi in libero nec
+      enim facilisis tincidunt.
     </p>
 
     <p>
-      More content below the ad... Nunc ac porttitor est. In rhoncus blandit
-      nisl.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin,
+      nunc in facilisis commodo, nisi erat aliquet enim, nec facilisis enim odio
+      nec nisi. Curabitur non libero at erat sollicitudin tincidunt. Aenean in
+      ligula at enim facilisis commodo. Suspendisse potenti. Morbi in libero nec
+      enim facilisis tincidunt.
     </p>
-
-    <div @click="viewMoreWithBug" class="view-more">View More</div>
   </main>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
 import InlineAd from "./InlineAd.vue";
-
-onMounted(() => {
-  // This is where you can add any JavaScript code that needs to run when the component is mounted
-  // console.log("MainContent component mounted");
-  // fetch("https://invalid.url/api/data")
-  //   .then((res) => res.json())
-  //   .catch((err) => console.error("Fetch failed:", err));
-});
-
-const viewMoreWithBug = () => {
-  // This function can be used to handle the "View More" button click
-  console.log("View More clicked");
-  let obj;
-  console.log(obj.prop); // TypeError: Cannot read property 'prop' of undefined
-};
+import TopBanner from "./TopBanner.vue";
 </script>
 
 <style scoped>

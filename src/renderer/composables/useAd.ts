@@ -1,5 +1,9 @@
 import { onMounted } from "vue";
 
+type slotType = {
+  getSlotElementId: () => string;
+};
+
 function useAd(adId: string, slotPath: string, dimensions: [number, number]) {
   onMounted(() => {
     if (!window.googletag) {
