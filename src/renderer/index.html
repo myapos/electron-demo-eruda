@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
       content="
@@ -19,22 +20,15 @@
       src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"
       crossorigin="anonymous"
     ></script>
-    <script>
-      window.googletag = window.googletag || { cmd: [] };
-      googletag.cmd.push(function () {
-        googletag
-          .defineSlot(
-            "/146900469/dummy_test_ad_unit_2",
-            [300, 250],
-            "div-gpt-ad-1748195411567-0"
-          )
-          .addService(googletag.pubads());
-        googletag.pubads().enableSingleRequest();
-        googletag.enableServices();
-      });
-    </script>
-
     <title>Eruda playground</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #e0f7f7;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>

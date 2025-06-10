@@ -6,7 +6,6 @@
 .main-content {
   display: flex;
   flex: 1;
-  padding: 1rem;
   position: relative;
 }
 </style>
