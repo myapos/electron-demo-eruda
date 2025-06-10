@@ -1,36 +1,67 @@
 <template>
   <div class="app-container">
     <Section>My Demo App</Section>
-    <TopAd v-if="adSlotsConf.topBanner">Top Banner Ad</TopAd>
+    <section class="top-banner">
+      <Ad
+        v-if="adSlotsConf.topBanner"
+        ad-id="div-gpt-ad-1749624797220-0"
+        slotPath="/146900469/top-responsive-ad-unit"
+        :dimensions="[
+          [728, 90],
+          [220, 90],
+        ]"
+        class="ad-top"
+        ><template #fallback>Top Fallback Content</template>
+      </Ad>
+    </section>
     <Main>
-      <SideAd
+      <Ad
         v-if="adSlotsConf.leftAd"
-        ad-id="div-gpt-ad-1748820156479-0"
-        slotPath="/146900469/side-ad"
-        :dimensions="[120, 600]"
-        >Left Banner Ad</SideAd
-      >
-      <Content :show-inline-ad="adSlotsConf.inlineAd" />
-      <SideAd
+        ad-id="div-gpt-ad-1749593285775-0"
+        slotPath="/146900469/responsive-left-ad-unit"
+        :dimensions="[
+          [60, 600],
+          [120, 600],
+        ]"
+        class="side-ad"
+        ><template #fallback>Fallback Content</template>
+      </Ad>
+      <Content />
+      <Ad
         v-if="adSlotsConf.rightAd"
-        ad-id="div-gpt-ad-1748822062979-0"
-        slotPath="/146900469/right-side-ad"
-        :dimensions="[120, 600]"
-        >Right Banner Ad</SideAd
+        ad-id="div-gpt-ad-1749593427952-0"
+        slotPath="/146900469/responsive-ad-unit"
+        :dimensions="[
+          [60, 600],
+          [120, 600],
+        ]"
+        class="side-ad"
+        ><template #fallback>Fallback Content</template></Ad
       >
     </Main>
-    <BottomAd v-if="adSlotsConf.bottomBanner">Bottom Banner Ad</BottomAd>
+    <section class="bottom-banner">
+      <!-- <BottomAd v-if="adSlotsConf.bottomBanner">Bottom Banner Ad</BottomAd> -->
+      <Ad
+        v-if="adSlotsConf.bottomBanner"
+        ad-id="div-gpt-ad-1749672458303-0"
+        slotPath="/146900469/responsive-bottom-ad-unit"
+        :dimensions="[
+          [728, 50],
+          [320, 50],
+        ]"
+        class="bottom-ad"
+        ><template #fallback>Fallback Content</template></Ad
+      >
+    </section>
     <Section>Footer content</Section>
   </div>
 </template>
 
 <script setup lang="ts">
 import Main from "./Main.vue";
-import BottomAd from "./BottomAd.vue";
-import TopAd from "./TopAd.vue";
 import Content from "./Content.vue";
 import Section from "./Section.vue";
-import SideAd from "./SideAd.vue";
+import Ad from "./Ad.vue";
 import "./assets/main.css";
 
 const activateAllAds = true;
@@ -40,7 +71,6 @@ const adSlotsConf = {
   leftAd: activateAllAds || false,
   topBanner: activateAllAds || false,
   bottomBanner: activateAllAds || false,
-  inlineAd: activateAllAds || false,
 };
 </script>
 
@@ -49,5 +79,48 @@ const adSlotsConf = {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.side-ad {
+  width: 120px;
+  height: 600px;
+}
+
+.top-banner,
+.bottom-banner {
+  display: flex;
+  justify-content: center;
+}
+
+.ad-top {
+  width: 728px;
+  min-height: 90px;
+  display: flex;
+  justify-content: center;
+}
+
+bottom-ad {
+  background-color: lightblue;
+  width: 728px;
+  height: 50px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem;
+}
+
+@media (max-width: 800px) {
+  .side-ad {
+    width: 60px;
+    height: 600px;
+  }
+
+  .ad-top {
+    width: 220px;
+  }
+
+  .bottom-ad {
+    width: 320px;
+  }
 }
 </style>
