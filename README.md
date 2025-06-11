@@ -39,6 +39,8 @@ Other tools for Tunelling
 #TODOs
 
 - Create some more ad banners and display them : OK
-  - multiple ad dimensions, bottom banner ads, left and right banners, top banner, inline ad
-- Investigate for fluid and responsive ads
+  - multiple ad dimensions, bottom banner ads, left and right banners, top banner, inline ad --> OK
+- Investigate for fluid and responsive ads --> OK
+  - top ad na dw an kanei k gia mobile --> den kanei,
+  - na balw ena 100X90
 - Use some more tools

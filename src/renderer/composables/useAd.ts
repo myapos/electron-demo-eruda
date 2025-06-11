@@ -9,7 +9,8 @@ let googleTagsAreEnabled = false;
 function useAd(
   adId: string,
   slotPath: string,
-  dimensions: [number, number] | Array<[number, number]>
+  dimensions: [number, number] | Array<[number, number]>,
+  onEmpty: (adId: string) => void = () => {}
 ) {
   onMounted(() => {
     if (!window.googletag) {
@@ -34,6 +35,14 @@ function useAd(
           console.error("Failed to define GPT slot.");
           return;
         }
+
+        googletag.pubads().addEventListener("slotRenderEnded", (event: any) => {
+          if (event.slot.getSlotElementId() === adId) {
+            if (event.isEmpty) {
+              onEmpty(adId);
+            }
+          }
+        });
 
         if (!googleTagsAreEnabled) {
           googleTagsAreEnabled = true;

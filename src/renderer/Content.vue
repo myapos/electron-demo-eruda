@@ -17,8 +17,6 @@
         potenti. Morbi in libero nec enim facilisis tincidunt.
       </p>
 
-      <InlineAd v-if="props.showInlineAd" />
-
       <button class="view-more" @click="toggleMoreContent">
         {{ showMoreText }}
       </button>
@@ -29,12 +27,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import InlineAd from "./InlineAd.vue";
 import MoreContent from "./MoreContent.vue";
-
-const props = defineProps<{
-  showInlineAd?: boolean;
-}>();
 
 const showMore = ref(false);
 
