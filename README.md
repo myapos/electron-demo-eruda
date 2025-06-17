@@ -44,3 +44,14 @@ Other tools for Tunelling
   - top ad na dw an kanei k gia mobile --> OK
   - na balw ena 100X90 --> OK
 - Use some more tools
+  - eruda
+  - console.re mesw apo reverse proxy serveo i localhost.run
+- na kanw simulate kapoio bug
+- windows installation - firewall ??
+- presentation structure
+  - slides
+  - to problima
+  - solution
+  - restrictions
+  - how to debug
+  - hands on
