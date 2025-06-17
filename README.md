@@ -41,6 +41,17 @@ Other tools for Tunelling
 - Create some more ad banners and display them : OK
   - multiple ad dimensions, bottom banner ads, left and right banners, top banner, inline ad --> OK
 - Investigate for fluid and responsive ads --> OK
-  - top ad na dw an kanei k gia mobile --> den kanei,
-  - na balw ena 100X90
+  - top ad na dw an kanei k gia mobile --> OK
+  - na balw ena 100X90 --> OK
 - Use some more tools
+  - eruda
+  - console.re mesw apo reverse proxy serveo i localhost.run
+- na kanw simulate kapoio bug
+- windows installation - firewall ??
+- presentation structure
+  - slides
+  - to problima
+  - solution
+  - restrictions
+  - how to debug
+  - hands on
