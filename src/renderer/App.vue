@@ -29,7 +29,7 @@
       <Content>
         <template #in-content-ads>
           <Ad
-            v-if="adSlotsConf.bottomBanner"
+            v-if="adSlotsConf.landscapeAd"
             ad-id="div-gpt-ad-1750788666471-0"
             slotPath="/146900469/ad_unit_1024X768"
             :dimensions="[[1024, 768]]"
@@ -75,14 +75,14 @@ import Section from "./Section.vue";
 import Ad from "./Ad.vue";
 import "./assets/main.css";
 
-const activateAllAds = true;
+const activateAllAds = false;
 
 const adSlotsConf = {
   rightAd: activateAllAds || false,
   leftAd: activateAllAds || false,
-  topBanner: activateAllAds || false,
+  topBanner: true || activateAllAds || false,
   bottomBanner: activateAllAds || false,
-  landscapeAd: activateAllAds || false,
+  landscapeAd: true || activateAllAds || false,
 };
 </script>
 

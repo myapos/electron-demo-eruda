@@ -54,37 +54,53 @@
       function loadEruda() {
         eruda.init();
         eruda.position("bottom");
-        console.log("Eruda initialized");
+        console.re.log("Eruda initialized");
       }
 
-      loadEruda();
-
-      const DESTINATION_URL =
-        "%%CLICK_URL_UNESC%%https://example.com/landing-page";
+      function onLoad() {
+        loadEruda();
+        const el = document.getElementById("my-ad");
+        // 1. uncomment the following line to see the bug
+        // console.re.css(el, "pointer-events");
+      }
 
       const DESTINATION_URL_FIXED = "%%CLICK_URL_UNESC%%https://google.com";
 
       function handleClick() {
-        // Log interaction
-        console.log("Ad clicked programmatically");
-        if (console.re && typeof console.re.log === "function") {
-          console.re.log("Billboard Ad Clicked");
+        function logThis() {
+          console.log("Inner this is:", this); // Will be `undefined` or `window`
         }
+
+        console.log("Ad clicked programmatically");
+
+        // Buggy scope: using var before declaration
+        // 2. Uncomment the following line to see the bug
+        // console.re.log("Trying to access buggyVar:", buggyVar); // ReferenceError
+
+        const buggyVar = "I am defined too late";
+
+        if (console.re && typeof console.re.log === "function") {
+          console.re.log("Landscape Ad Clicked");
+        }
+
+        logThis();
 
         setTimeout(() => {
           try {
+            // 3. Uncomment the following line to see the bug
+            // windowopen(DESTINATION_URL_FIXED, "_blank");
             window.open(DESTINATION_URL_FIXED, "_blank");
           } catch (e) {
-            console.error("Popup blocked or failed:", e);
             if (console.re) console.re.error("Popup blocked", e.message);
+            console.re.trace();
           }
         }, 300);
       }
-
       // Optional: impression ping
       window.addEventListener("load", () => {
+        onLoad();
         if (console.re && typeof console.re.info === "function") {
-          console.re.info("Ad Loaded at " + new Date().toISOString());
+          console.re.info("landscape Ad Loaded at " + new Date().toISOString());
         }
       });
     </script>

@@ -56,11 +56,7 @@
         eruda.position("bottom");
         console.log("Eruda initialized");
       }
-
       loadEruda();
-
-      const DESTINATION_URL =
-        "%%CLICK_URL_UNESC%%https://example.com/landing-page";
 
       const DESTINATION_URL_FIXED = "%%CLICK_URL_UNESC%%https://google.com";
 
@@ -83,7 +79,6 @@
 
       // Optional: impression ping
       window.addEventListener("load", () => {
-        console.log("Ad loaded");
         if (console.re && typeof console.re.info === "function") {
           console.re.info("Ad Loaded at " + new Date().toISOString());
         }
