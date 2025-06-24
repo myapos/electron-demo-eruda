@@ -8,21 +8,41 @@
         font-family: Arial, sans-serif;
       }
     </style>
+    <!--<script data-consolejs-channel="790b964f-b518-bb48-7186-32921408aafc" src="https://remotejs.com/agent/agent.js"></script>
+c0a36a85d19d01:server, 2b14e6f5d6d91d: ui
+
+-->
+    <script
+      src="http://localhost:3030/connector.js"
+      data-channel="debugChannel"
+      data-server="http://localhost:8088"
+      id="consolerescript"
+    ></script>
   </head>
   <body>
-
-      <a
-        href="%%CLICK_URL_UNESC%%https://google.com"
-        target="_blank"
-        style="
-          display: block;
-          width: 728px;
-          height: 90px;
-          background: red;
-          color: black;
-          font-size: 20px;
-        "
-      >
+    <div
+      style="
+        display: block;
+        width: 728px;
+        height: 90px;
+        background: red;
+        color: black;
+        font-size: 20px;
+      "
+    >
+      <a href="%%CLICK_URL_UNESC%%https://google.com" target="_blank">
         Top Ad
       </a>
     </div>
+    <script>
+      function onClick() {
+        console.log("clicked");
+        if (console.re && typeof console.re.log === "function") {
+          console.re.debug("remote log test", this, myData);
+        } else {
+          console.warn("console.re.log is not available");
+        }
+      }
+    </script>
+  </body>
+</html>
