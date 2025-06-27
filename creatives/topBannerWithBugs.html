@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Billboard Ad Test</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+      }
+
+      #billboard {
+        width: 728px;
+        height: 90px;
+        background: linear-gradient(to right, #ff4d4d, #cc0000);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        user-select: none;
+        margin: 20px auto;
+        border-radius: 6px;
+        /* pointer-events: none; */
+      }
+
+      #status {
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/eruda@3.4.1/eruda.min.js"></script> -->
+    <!-- Remote logger script (console.re-style) -->
+    <script
+      src="http://localhost:3030/connector.js"
+      data-channel="debugChannel"
+      data-server="http://localhost:8088"
+      id="consolerescript"
+    ></script>
+  </head>
+  <body>
+    <div id="billboard" onclick="handleClick()">
+      🔥 Click Here for the Best Deals
+    </div>
+
+    <script>
+      function loadEruda() {
+        eruda.init();
+        eruda.position("bottom");
+        console.log("Eruda initialized");
+      }
+      loadEruda();
+
+      const DESTINATION_URL_FIXED = "%%CLICK_URL_UNESC%%https://google.com";
+
+      function handleClick() {
+        // Log interaction
+        console.log("Ad clicked programmatically");
+        if (console.re && typeof console.re.log === "function") {
+          console.re.log("Billboard Ad Clicked");
+        }
+
+        setTimeout(() => {
+          try {
+            window.open(DESTINATION_URL_FIXED, "_blank");
+          } catch (e) {
+            console.error("Popup blocked or failed:", e);
+            if (console.re) console.re.error("Popup blocked", e.message);
+          }
+        }, 300);
+      }
+
+      // Optional: impression ping
+      window.addEventListener("load", () => {
+        if (console.re && typeof console.re.info === "function") {
+          console.re.info("Ad Loaded at " + new Date().toISOString());
+        }
+      });
+    </script>
+  </body>
+</html>

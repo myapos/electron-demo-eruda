@@ -26,7 +26,18 @@
         class="side-ad"
         ><template #fallback>Fallback Content</template>
       </Ad>
-      <Content />
+      <Content>
+        <template #in-content-ads>
+          <Ad
+            v-if="adSlotsConf.landscapeAd"
+            ad-id="div-gpt-ad-1750788666471-0"
+            slotPath="/146900469/ad_unit_1024X768"
+            :dimensions="[[1024, 768]]"
+            class="bottom-ad"
+            ><template #fallback>Fallback Content</template></Ad
+          >
+        </template>
+      </Content>
       <Ad
         v-if="adSlotsConf.rightAd"
         ad-id="div-gpt-ad-1749593427952-0"
@@ -64,13 +75,14 @@ import Section from "./Section.vue";
 import Ad from "./Ad.vue";
 import "./assets/main.css";
 
-const activateAllAds = true;
+const activateAllAds = false;
 
 const adSlotsConf = {
   rightAd: activateAllAds || false,
   leftAd: activateAllAds || false,
-  topBanner: activateAllAds || false,
+  topBanner: true || activateAllAds || false,
   bottomBanner: activateAllAds || false,
+  landscapeAd: true || activateAllAds || false,
 };
 </script>
 
@@ -97,6 +109,14 @@ const adSlotsConf = {
   min-height: 90px;
   display: flex;
   justify-content: center;
+}
+
+.big-ad {
+  width: 1024px;
+  height: 768px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 bottom-ad {

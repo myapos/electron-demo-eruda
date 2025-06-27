@@ -22,6 +22,7 @@
       </button>
     </section>
     <MoreContent :class="{ 'more-content': !showMore }" />
+    <slot name="in-content-ads" />
   </section>
 </template>
 
@@ -47,6 +48,7 @@ const showMoreText = computed(() => {
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .content {
   display: flex;

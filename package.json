@@ -1,5 +1,5 @@
 {
-  "name": "electron-demo-eruda",
+  "name": "remote-debugging-tools-demo",
   "version": "1.0.0",
   "description": "",
   "main": "dist/main/main.js",
@@ -47,7 +47,7 @@
   },
   "build": {
     "appId": "com.yourcompany.yourapp",
-    "productName": "ElectronDemoEruda",
+    "productName": "RemoteDebuggingToolsDemo",
     "directories": {
       "output": "release"
     },
