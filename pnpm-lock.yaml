@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      electron:
-        specifier: 25.9.8
-        version: 25.9.8
       eruda:
         specifier: ^3.4.1
         version: 3.4.1
@@ -30,6 +27,9 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
+      electron:
+        specifier: 25.9.8
+        version: 25.9.8
       electron-builder:
         specifier: ^26.0.12
         version: 26.0.12(electron-builder-squirrel-windows@26.0.12)
